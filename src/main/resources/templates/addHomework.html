@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布作业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    学生作业管理系统
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>发布作业</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <form action="" name="userForm">
+
+        作业标题：<input type="text" name="homeworktitle"><br><br><br>
+        作业要求：<input type="text" name="homeworkcontent"><br><br><br>
+        截止时间: <input type="text" name="homeworkupdate_time"><br><br><br>
+
+        <input type="button" value="添加" onclick="addHomework()">
+    </form>
+    <script type="text/javascript">
+        function addHomework() {
+            var form = document.forms[0];
+            form.action = "/addHomework";
+            form.method = "post";
+            form.submit();
+        }
+    </script>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StudentDao">
+    <resultMap type="Sthomework" id="sthomeworkResultMap">
+        <id property="sthomeworkid" column="sthomeworkid"/>
+        <result property="homeworktitle" column="homeworktitle"/>
+        <result property="name" column="name"/>
+        <result property="sthomeworkcontent" column="sthomeworkcontent"/>
+        <result property="stworkcreatetime" column="stworkcreatetime"/>
+    </resultMap>
+
+
+    <insert id="addSthomework" parameterType="Sthomework">
+        INSERT INTO s_studenthomework(sthomeworkid,homeworktitle,name,sthomeworkcontent,stworkcreatetime) VALUE (#{sthomeworkid},#{homeworktitle},#{name},#{sthomeworkcontent},#{stworkcreatetime})
+    </insert>
+
+    <delete id="deleteSthomeworkById" parameterType="long">
+        DELETE FROM s_studenthomework WHERE sthomeworkid=#{sthomeworkid}
+    </delete>
+
+    <update id="updateSthomework" parameterType="Sthomework">
+        UPDATE s_studenthomework
+        SET homeworktitle = #{homeworktitle},name=#{name},sthomeworkcontent= #{sthomeworkcontent},stworkcreatetime=#{stworkcreatetime}
+        WHERE sthomeworkid = #{sthomeworkid}
+    </update>
+
+    <select id="querySthomeworkById" resultMap="sthomeworkResultMap" parameterType="long">
+        SELECT sthomeworkid,homeworktitle,name,sthomeworkcontent,stworkcreatetime
+        FROM s_studenthomework
+        WHERE sthomeworkid=#{sthomeworkid}
+    </select>
+    <select id="queryAllSthomework" resultMap="sthomeworkResultMap">
+        SELECT sthomeworkid,homeworktitle,name,sthomeworkcontent,stworkcreatetime
+        FROM s_studenthomework
+    </select>
+
+
+
+</mapper>

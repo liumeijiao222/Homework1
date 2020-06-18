@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>加入学生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    学生作业管理系统
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>加入学生</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <form   name="userForm">
+        学生id：<input type="text" name="studentId"><br><br><br>
+        学生姓名：<input type="text" name="studentname"><br><br><br>
+
+        <input type="button" value="添加" onclick="addStudent()">
+    </form>
+    <script type="text/javascript">
+        function addStudent() {
+            var form = document.forms[0];
+            form.action = "/addStudent";
+            form.method = "post";
+            form.submit();
+        }
+    </script>
+
+
+
+</div>
+</body>
+</html>

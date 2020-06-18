@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TeacherDao">
+    <resultMap type="Homework" id="homeworkResultMap">
+        <id property="homeworkid" column="homeworkid"/>
+        <result property="homeworktitle" column="homeworktitle"/>
+        <result property="homeworkcontent" column="homeworkcontent"/>
+        <result property="homeworkcreate_time" column="homeworkcreate_time"/>
+        <result property="homeworkupdate_time" column="homeworkupdate_time"/>
+    </resultMap>
+
+
+    <insert id="addHomework" parameterType="Homework">
+        INSERT INTO s_homework(homeworkid,homeworktitle,homeworkcontent,homeworkupdate_time) VALUE (#{homeworkid},#{homeworktitle},#{homeworkcontent},#{homeworkupdate_time})
+    </insert>
+
+    <delete id="deleteHomeworkById" parameterType="long">
+        DELETE FROM s_Homework WHERE homeworkid=#{homeworkid}
+    </delete>
+
+    <update id="updateHomework" parameterType="Homework">
+        UPDATE s_homework
+        SET homeworktitle = #{homeworktitle},homeworkcontent= #{homeworkcontent},homeworkcreate_time = #{homeworkcreate_time},homeworkupdate_time = #{homeworkupdate_time}
+        WHERE homeworkid = #{homeworkid}
+    </update>
+
+    <select id="queryhomeworkById" resultMap="homeworkResultMap" parameterType="long">
+        SELECT homeworkid,homeworktitle,homeworkcontent,homeworkcreate_time,homeworkupdate_time
+        FROM s_homework
+        WHERE homeworkid=#{homeworkid}
+    </select>
+    <select id="queryAllHomework" resultMap="homeworkResultMap">
+        SELECT homeworkid,homeworktitle,homeworkcontent,homeworkcreate_time,homeworkupdate_time
+        FROM s_homework
+    </select>
+
+    <select id="getBytitle" parameterType="String" resultType="Homework">
+        select * from s_homework where homeworktitle=#{homeworktitle}
+    </select>
+
+
+</mapper>

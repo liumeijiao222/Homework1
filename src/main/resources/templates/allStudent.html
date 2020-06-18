@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>教师端</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    学生作业管理系统
+                </h1>
+            </div>
+        </div>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/" font-size="50px">老师你好(点击此处可注销)</a>
+        </li>
+    </ul>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>选择操作</small>
+                </h1>
+                <div id="login_control">
+                    <a class="btn btn-primary" href="/allStudent">学生管理</a>
+                    <a class="btn btn-primary" href="/allHomework">作业管理</a>
+                    <a class="btn btn-primary" href="/showStwork">作业详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 column">
+            <a class="btn btn-primary" href="/toAddStudent">添加学生</a>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>学生id</th>
+                    <th>学生姓名</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student:${list}">
+                        <td  th:text="${student.studentId}"></td>
+                        <td  th:text="${student.studentname}"></td>
+                        <td  th:text="${student.studentcreateTime}"></td>
+
+                        <td>
+                            <a  th:href="@{/toUpdateStudent(id=${student.studentId})}">更改</a>|
+                            <a  th:href="@{/deleteStudent/}+${student.studentId}">删除</a>
+
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TeacherDao">
+    <resultMap type="Student" id="studentResultMap">
+        <id property="studentId" column="id"/>
+        <result property="studentname" column="name"/>
+        <result property="studentcreateTime" column="create_time"/>
+        <result property="studentupdateTime" column="update_time"/>
+    </resultMap>
+
+
+    <select id="getstudentName" parameterType="String" resultType="Student">
+        select * from s_student where name=#{studentname}
+    </select>
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO s_student(id,name) VALUE (#{studentId},#{studentname})
+    </insert>
+
+    <delete id="deleteStudentById" parameterType="long">
+        DELETE FROM s_student WHERE id=#{studentID}
+    </delete>
+
+    <update id="updateStudent" parameterType="Student">
+        UPDATE s_student
+        SET NAME = #{studentname},CREATE_TIME = #{studentcreateTime},UPDATE_TIME = #{studentupdateTime}
+        WHERE id = #{studentId}
+    </update>
+
+    <select id="queryById" resultMap="studentResultMap" parameterType="long">
+        SELECT id,name,create_time,update_time
+        FROM s_student
+        WHERE id=#{studentId}
+    </select>
+    <select id="queryAllStudent" resultMap="studentResultMap">
+        SELECT id,name,create_time,update_time
+        FROM s_student
+    </select>
+
+
+
+</mapper>

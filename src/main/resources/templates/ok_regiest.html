@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/community.css">
+<script src="js/bootstrap.min.js" type="application/javascript"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+    <script type="text/javascript"></script>
+</head>
+
+<body>
+<div id="login_frame">
+    <form method="post">
+        <form align="center">
+            <div>你注册的用户名为：<span th:text="${regiest_username}"></span><br></div>
+            <div>你注册的密码为：<span th:text="${regiest_password}"></span></div>
+            <div><a href="/">去登录吧</a></div>
+        </form>
+    </form>
+</div>
+</body>
+</html>

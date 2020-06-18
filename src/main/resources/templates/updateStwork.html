@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>修改已提交作业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="login.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                   学生作业管理系统
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>更新作业</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="" name="userForm">
+        <input type="hidden" th:name="sthomeworkid" th:value="${sthomework.sthomeworkid}"/>
+        作业标题：<input type="text" th:name="homeworktitle"  th:value="${sthomework.homeworktitle}"/>
+        姓名：<input type="text" th:name="name"  th:value="${sthomework.name}"/>
+        作业内容：<input type="text" th:name="sthomeworkcontent"  th:value="${sthomework.sthomeworkcontent}"/>
+
+
+        <input type="button" value="提交" onclick="updateSthomework()"/>
+    </form>
+    <script type="text/javascript">
+        function updateSthomework() {
+            var form = document.forms[0];
+            form.action = "/updateStwork";
+            form.method = "post";
+            form.submit();
+        }
+    </script>
+</div>
